@@ -19,33 +19,77 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(kAppName)),
-      body: _currentPage,
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text(kAppName),
-              decoration: BoxDecoration(
-                color: Colors.white,
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(40),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                child: Row(children: [
+                  SizedBox(width: 100),
+                  Text(
+                    kAppName,
+                    style: TextStyle(
+                        color: Colors.lightBlueAccent,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        letterSpacing: 3,
+                        fontFamily: 'Roboto'),
+                  ),
+                  SizedBox(width: 100),
+                  TabBar(
+                    isScrollable: false,
+                    indicatorColor: Colors.pinkAccent,
+                    labelColor: Colors.black,
+                    tabs: [
+                      Tab(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text("Home"),
+                        ),
+                      ),
+                      Tab(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text("Home"),
+                        ),
+                      ),
+                      Tab(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text("Home"),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
               ),
             ),
-            ListTile(
-              title: Text('Home'),
-              onTap: () {_navigateToPageAndClose(Menu());},
-            ),
+          ),
+        ),
+        body: TabBarView(
+          children: [
+            Menu(),
+            Icon(Icons.directions_transit),
+            Icon(Icons.directions_bike),
           ],
         ),
       ),
     );
   }
 
-  _navigateToPageAndClose(Widget page){
-    setState(() {
-      _currentPage = page;
-    });
-    Navigator.pop(context);
+  _singleTab(label){
+    return Tab(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(label),
+      )
+    );
   }
 }

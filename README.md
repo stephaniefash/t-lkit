@@ -1,4 +1,4 @@
-# tulkit
+# tülkit
 
 A new Flutter project.
 
