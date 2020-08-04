@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tulkit/constants/strings.dart';
+import 'package:tulkit/widgets/home/single_menu_option.dart';
 
 import 'menu/menu.dart';
 
@@ -23,28 +24,28 @@ class _HomePageState extends State<HomePage>
     return DefaultTabController(
       length: 1,
       child: Scaffold(
-          backgroundColor: Colors.white,
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(menuPadding),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Container(
-                width: double.infinity,
-                child: Text(
-                  kAppName,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w100,
-                      fontSize: 24,
-                      letterSpacing: 20,
-                      fontFamily: kLexFont),
-                ),
+        backgroundColor: Colors.white,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(menuPadding),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              width: double.infinity,
+              child: Text(
+                kAppName,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w100,
+                    fontSize: 20,
+                    letterSpacing: 10,
+                    fontFamily: kLexFont),
               ),
             ),
           ),
-          body: Menu()),
+        ),
+        body: Menu(),
+      ),
     );
   }
-
 }
