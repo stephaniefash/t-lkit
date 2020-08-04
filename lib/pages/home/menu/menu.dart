@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tulkit/constants/app_colors.dart';
+import 'package:tulkit/constants/strings.dart';
 
 class Menu extends StatefulWidget {
   @override
@@ -14,12 +16,12 @@ class _MenuState extends State<Menu> {
           topRight: Radius.circular(20),
           topLeft: Radius.circular(20),
         ),
-        color: Color.fromRGBO(228, 236, 240, 1),
+        color: AppColors.grey,
       ),
-      margin: EdgeInsets.symmetric(horizontal: 50),
+      margin: EdgeInsets.symmetric(horizontal: menuPadding),
       width: double.infinity,
       height: double.infinity,
-      child: Text("app list"),
+      child: Text(""),
     );
   }
 }
