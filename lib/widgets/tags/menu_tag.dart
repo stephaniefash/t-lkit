@@ -13,7 +13,7 @@ class MenuTag extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 12),
+          padding: EdgeInsets.symmetric(vertical: 8, horizontal: 15),
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(

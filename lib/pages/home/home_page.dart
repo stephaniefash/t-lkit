@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tulkit/constants/strings.dart';
-import 'package:tulkit/widgets/home/single_menu_option.dart';
 
 import 'menu/menu.dart';
 
@@ -26,7 +25,7 @@ class _HomePageState extends State<HomePage>
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(menuPadding),
+          preferredSize: Size.fromHeight(kMenuPadding),
           child: Align(
             alignment: Alignment.centerLeft,
             child: Container(

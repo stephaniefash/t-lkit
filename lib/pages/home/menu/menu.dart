@@ -10,7 +10,7 @@ class Menu extends StatefulWidget {
 
 class _MenuState extends State<Menu> {
 
-  double padding = menuPadding * 1.5;
+  double padding = kMenuPadding * 1.5;
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +22,7 @@ class _MenuState extends State<Menu> {
         ),
         color: AppColors.grey,
       ),
-      margin: EdgeInsets.symmetric(horizontal: menuPadding),
-      padding: EdgeInsets.symmetric(horizontal: menuPadding),
+      padding: EdgeInsets.symmetric(horizontal: kMenuPadding),
       width: double.infinity,
       height: double.infinity,
       child: GridView.count(
@@ -37,8 +36,6 @@ class _MenuState extends State<Menu> {
           SingleMenuOption(),
           SingleMenuOption(),
           SingleMenuOption(),
-          SingleMenuOption(),
-          SingleMenuOption()
         ],
       ),
     );
