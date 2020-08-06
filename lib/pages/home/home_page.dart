@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage>
                     color: Colors.black,
                     fontWeight: FontWeight.w100,
                     fontSize: 20,
-                    letterSpacing: 10,
+                    letterSpacing: 20,
                     fontFamily: kLexFont),
               ),
             ),

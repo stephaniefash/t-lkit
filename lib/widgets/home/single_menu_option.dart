@@ -15,9 +15,14 @@ class SingleMenuOption extends StatelessWidget {
         children: [
           Container(
             height: 240,
+            width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(5)),
               color: AppColors.grey,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Image.asset('images/hourglass.png'),
             ),
           ),
           Padding(
