@@ -10,7 +10,7 @@ class Menu extends StatefulWidget {
 
 class _MenuState extends State<Menu> {
 
-  double padding = kMenuPadding * 1.5;
+  double horizontalPadding = kMenuPadding * 2.5;
 
   @override
   Widget build(BuildContext context) {
@@ -22,20 +22,18 @@ class _MenuState extends State<Menu> {
         ),
         color: AppColors.grey,
       ),
-      padding: EdgeInsets.symmetric(horizontal: kMenuPadding),
+      padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
       width: double.infinity,
       height: double.infinity,
       child: GridView.count(
-        childAspectRatio: (0.8),
+        childAspectRatio: (1),
         crossAxisCount: 3,
         children: [
-          SingleMenuOption(),
-          SingleMenuOption(),
-          SingleMenuOption(),
-          SingleMenuOption(),
-          SingleMenuOption(),
-          SingleMenuOption(),
-          SingleMenuOption(),
+          SingleMenuOption(imageAsset: 'images/hourglass.png',optionName: kMenuPomodoroTitle, menuTag: kProductivityTag),
+          SingleMenuOption(imageAsset: 'images/hourglass.png',optionName: kMenuPomodoroTitle, menuTag: kProductivityTag),
+          SingleMenuOption(imageAsset: 'images/hourglass.png',optionName: kMenuPomodoroTitle, menuTag: kProductivityTag),
+          SingleMenuOption(imageAsset: 'images/hourglass.png',optionName: kMenuPomodoroTitle, menuTag: kProductivityTag),
+          SingleMenuOption(imageAsset: 'images/hourglass.png',optionName: kMenuPomodoroTitle, menuTag: kProductivityTag),
         ],
       ),
     );

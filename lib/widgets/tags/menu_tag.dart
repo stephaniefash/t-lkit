@@ -5,7 +5,7 @@ class MenuTag extends StatelessWidget {
   final Color textColor;
   final Color containerColor;
 
-  MenuTag(this.text, this.textColor, this.containerColor);
+  MenuTag({@required this.text, this.textColor, this.containerColor});
 
   @override
   Widget build(BuildContext context) {

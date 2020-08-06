@@ -5,6 +5,17 @@ import 'package:tulkit/constants/strings.dart';
 import 'package:tulkit/widgets/tags/menu_tag.dart';
 
 class SingleMenuOption extends StatelessWidget {
+
+  final String imageAsset;
+  final String optionName;
+  final String menuTag;
+
+  SingleMenuOption({
+    @required this.imageAsset,
+    @required this.optionName,
+    this.menuTag
+  });
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,43 +33,37 @@ class SingleMenuOption extends StatelessWidget {
             ),
             child: Padding(
               padding: const EdgeInsets.all(20.0),
-              child: Image.asset('images/hourglass.png'),
+              child: Image.asset(imageAsset),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 20, bottom: 30),
-            child: Align(
-                alignment: Alignment.centerLeft,
-                child: MenuTag(
-                    "productivity", AppColors.darkPink, AppColors.lightPink)),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                kMenuPomodoroTitle,
-                style: TextStyle(
-                    color: Colors.black87,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: 'Roboto',
-                    fontSize: 28),
-              ),
+            padding: const EdgeInsets.symmetric(vertical: 20.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    optionName,
+                    style: TextStyle(
+                        color: Colors.black87,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: kMontserratFont,
+                        fontSize: 20),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: MenuTag(
+                      text: menuTag,
+                      textColor: AppColors.darkPink,
+                      containerColor: AppColors.lightPink
+                  ),
+                ),
+              ],
             ),
           ),
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
-            child: Text(
-              kMenuPomodoroSubtitle,
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                  height: 1.3,
-                  color: Colors.black54,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 18),
-            ),
-          )
         ],
       ),
     );
