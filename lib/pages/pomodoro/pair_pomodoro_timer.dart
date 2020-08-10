@@ -3,6 +3,8 @@ import 'package:tulkit/constants/app_colors.dart';
 import 'package:tulkit/pages/pomodoro/time_elapsed_indicator.dart';
 
 class PairPomodoroTimerCircleAnimation extends StatefulWidget {
+
+
   @override
   _PairPomodoroTimerCircleAnimationState createState() => _PairPomodoroTimerCircleAnimationState();
 }
