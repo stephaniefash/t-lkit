@@ -49,8 +49,7 @@ class TimeElapsedPainter extends CustomPainter {
       canvas.drawArc(Offset.zero & size, 0, _sweep, false, backgroundPaint);
     }
 
-    if (value == null) // Indeterminate
-      paint.strokeCap = StrokeCap.square;
+    if (value == null) paint.strokeCap = StrokeCap.square;
 
     canvas.drawArc(Offset.zero & size, arcStart, arcSweep, false, paint);
   }

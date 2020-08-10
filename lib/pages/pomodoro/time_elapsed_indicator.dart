@@ -11,24 +11,22 @@ class TimeElapsedIndicator extends ProgressIndicator {
   const TimeElapsedIndicator({
     Key key,
     double value,
-    Color backgroundColor,
-    Animation<Color> valueColor,
-    this.strokeWidth = 4.0,
+    Color unElapsedLineColor,
+    this.elapsedLineColor,
+    this.strokeWidth = 2.0,
     String semanticsLabel,
     String semanticsValue,
   }) : super(
           key: key,
           value: value,
-          backgroundColor: backgroundColor,
-          valueColor: valueColor,
+          backgroundColor: unElapsedLineColor,
           semanticsLabel: semanticsLabel,
           semanticsValue: semanticsValue,
         );
 
   /// The width of the line used to draw the circle.
   final double strokeWidth;
-
-  Color _getValueColor(BuildContext context) => valueColor?.value ?? Theme.of(context).accentColor;
+  final Color elapsedLineColor;
 
   Widget _buildSemanticsWrapper({
     @required BuildContext context,
@@ -52,18 +50,20 @@ class TimeElapsedIndicator extends ProgressIndicator {
 class _TimeElapsedIndicator extends State<TimeElapsedIndicator>
     with SingleTickerProviderStateMixin {
   static const int _pathCount = _kIndeterminateCircularDuration ~/ 1333;
-  static const int _rotationCount = _kIndeterminateCircularDuration ~/ 2222;
+  static const int _rotationCount = 1;
 
   static final Animatable<double> _strokeHeadTween = CurveTween(
     curve: const Interval(0.0, 0.5, curve: Curves.fastOutSlowIn),
   ).chain(CurveTween(
     curve: const SawTooth(_pathCount),
   ));
+
   static final Animatable<double> _strokeTailTween = CurveTween(
     curve: const Interval(0.5, 1.0, curve: Curves.fastOutSlowIn),
   ).chain(CurveTween(
     curve: const SawTooth(_pathCount),
   ));
+
   static final Animatable<double> _offsetTween =
       CurveTween(curve: const SawTooth(_pathCount));
   static final Animatable<double> _rotationTween =
@@ -78,16 +78,12 @@ class _TimeElapsedIndicator extends State<TimeElapsedIndicator>
       duration: const Duration(milliseconds: _kIndeterminateCircularDuration),
       vsync: this,
     );
-    if (widget.value == null) _controller.repeat();
   }
 
   @override
   void didUpdateWidget(TimeElapsedIndicator oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.value == null && !_controller.isAnimating)
-      _controller.repeat();
-    else if (widget.value != null && _controller.isAnimating)
-      _controller.stop();
+    _controller.stop();
   }
 
   @override
@@ -101,18 +97,12 @@ class _TimeElapsedIndicator extends State<TimeElapsedIndicator>
     return widget._buildSemanticsWrapper(
       context: context,
       child: Container(
-        constraints: const BoxConstraints(
-          minWidth: _kMinCircularProgressIndicatorSize,
-          minHeight: _kMinCircularProgressIndicatorSize,
-        ),
         child: CustomPaint(
           painter: TimeElapsedPainter(
             backgroundColor: widget.backgroundColor,
-            valueColor: widget._getValueColor(context),
+            valueColor: widget.elapsedLineColor,
             value: widget.value,
-            // may be null
             headValue: headValue,
-            // remaining arguments are ignored if widget.value is not null
             tailValue: tailValue,
             offsetValue: offsetValue,
             rotationValue: rotationValue,

@@ -14,7 +14,7 @@ class _PairPomodoroState extends State<PairPomodoro>
   @override
   void initState() {
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 1500),
+      duration: const Duration(milliseconds: 3000),
       vsync: this,
       animationBehavior: AnimationBehavior.preserve,
     )..forward();
@@ -30,12 +30,17 @@ class _PairPomodoroState extends State<PairPomodoro>
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: AnimatedBuilder(
-          animation: _animation,
-          builder: (BuildContext context, Widget child) {
-            return TimeElapsedIndicator(
-                backgroundColor: Colors.black, value: _animation.value);
-          }),
+      child: Center(
+        child: Container(
+          width: 400,
+          height: 400,
+          child: AnimatedBuilder(
+              animation: _animation,
+              builder: (BuildContext context, Widget child) {
+                return TimeElapsedIndicator(unElapsedLineColor: Colors.orange, value: _animation.value, elapsedLineColor: Colors.purple,);
+              }),
+        ),
+      ),
     );
   }
 }
