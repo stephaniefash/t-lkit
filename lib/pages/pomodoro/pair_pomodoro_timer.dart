@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tulkit/constants/app_colors.dart';
 import 'package:tulkit/pages/pomodoro/time_elapsed_indicator.dart';
 
 class PairPomodoroTimerCircleAnimation extends StatefulWidget {
@@ -30,19 +31,19 @@ class _PairPomodoroTimerCircleAnimationState extends State<PairPomodoroTimerCirc
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: AppColors.darkBlue,
       child: Center(
         child: Container(
-          width: 400,
-          height: 400,
+          width: 500,
+          height: 500,
           child: AnimatedBuilder(
               animation: _animation,
               builder: (BuildContext context, Widget child) {
                 return TimeElapsedIndicator(
-                  unElapsedLineColor: Colors.orange,
+                  unElapsedLineColor: AppColors.grey,
                   value: _animation.value,
-                  elapsedLineColor: Colors.purple,
-                  strokeWidth: 4,
+                  elapsedLineColor: Colors.redAccent,
+                  strokeWidth: 20,
                 );
               }),
         ),

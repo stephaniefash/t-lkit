@@ -2,28 +2,26 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tulkit/constants/app_colors.dart';
 import 'package:tulkit/constants/strings.dart';
-import 'package:tulkit/pages/pomodoro/pair_pomodoro_timer.dart';
+import 'package:tulkit/pages/pomodoro/pair_pomodoro_page.dart';
 import 'package:tulkit/widgets/tags/menu_tag.dart';
 
 class SingleMenuOption extends StatelessWidget {
-
   final String imageAsset;
   final String optionName;
   final String menuTag;
 
-  SingleMenuOption({
-    @required this.imageAsset,
-    @required this.optionName,
-    this.menuTag
-  });
+  SingleMenuOption(
+      {@required this.imageAsset, @required this.optionName, this.menuTag});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){  Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => PairPomodoroTimerCircleAnimation()),
-      );},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => PairPomodoroPage()),
+        );
+      },
       child: Container(
         padding: EdgeInsets.all(20),
         margin: EdgeInsets.all(20),
@@ -64,8 +62,7 @@ class SingleMenuOption extends StatelessWidget {
                     child: MenuTag(
                         text: menuTag,
                         textColor: AppColors.darkPink,
-                        containerColor: AppColors.lightPink
-                    ),
+                        containerColor: AppColors.lightPink),
                   ),
                 ],
               ),
