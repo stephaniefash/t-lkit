@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:tulkit/pages/pomodoro/time_elapsed_indicator.dart';
 
-class PairPomodoro extends StatefulWidget {
+class PairPomodoroTimerCircleAnimation extends StatefulWidget {
   @override
-  _PairPomodoroState createState() => _PairPomodoroState();
+  _PairPomodoroTimerCircleAnimationState createState() => _PairPomodoroTimerCircleAnimationState();
 }
 
-class _PairPomodoroState extends State<PairPomodoro>
+class _PairPomodoroTimerCircleAnimationState extends State<PairPomodoroTimerCircleAnimation>
     with SingleTickerProviderStateMixin {
   Animation<double> _animation;
   AnimationController _controller;

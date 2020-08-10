@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tulkit/constants/app_colors.dart';
 import 'package:tulkit/constants/strings.dart';
-import 'package:tulkit/pages/pomodoro/pair_pomodoro_page.dart';
+import 'package:tulkit/pages/pomodoro/pair_pomodoro_timer.dart';
 import 'package:tulkit/widgets/tags/menu_tag.dart';
 
 class SingleMenuOption extends StatelessWidget {
@@ -22,7 +22,7 @@ class SingleMenuOption extends StatelessWidget {
     return GestureDetector(
       onTap: (){  Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => PairPomodoro()),
+        MaterialPageRoute(builder: (context) => PairPomodoroTimerCircleAnimation()),
       );},
       child: Container(
         padding: EdgeInsets.all(20),
