@@ -30,6 +30,7 @@ class _PairPomodoroState extends State<PairPomodoro>
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.white,
       child: Center(
         child: Container(
           width: 400,
@@ -37,7 +38,12 @@ class _PairPomodoroState extends State<PairPomodoro>
           child: AnimatedBuilder(
               animation: _animation,
               builder: (BuildContext context, Widget child) {
-                return TimeElapsedIndicator(unElapsedLineColor: Colors.orange, value: _animation.value, elapsedLineColor: Colors.purple,);
+                return TimeElapsedIndicator(
+                  unElapsedLineColor: Colors.orange,
+                  value: _animation.value,
+                  elapsedLineColor: Colors.purple,
+                  strokeWidth: 4,
+                );
               }),
         ),
       ),
