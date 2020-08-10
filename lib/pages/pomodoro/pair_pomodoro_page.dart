@@ -23,13 +23,7 @@ class _PairPomodoroState extends State<PairPomodoro>
       parent: _controller,
       curve: const Interval(0.0, 0.9, curve: Curves.fastOutSlowIn),
       reverseCurve: Curves.fastOutSlowIn,
-    )..addStatusListener((status) {
-        if (status == AnimationStatus.dismissed) {
-          _controller.forward();
-        } else if (status == AnimationStatus.completed) {
-          _controller.reverse();
-        }
-      });
+    );
     super.initState();
   }
 
