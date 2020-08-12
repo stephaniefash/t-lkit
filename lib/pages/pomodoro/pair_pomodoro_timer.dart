@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tulkit/constants/app_colors.dart';
-import 'package:tulkit/constants/strings.dart';
+import 'package:tulkit/pages/pomodoro/countdown_widget.dart';
 import 'package:tulkit/pages/pomodoro/time_elapsed_indicator.dart';
 
 class PairPomodoroTimerCircleAnimation extends StatefulWidget {
@@ -59,16 +59,7 @@ class _PairPomodoroTimerCircleAnimationState
             ),
           ),
         ),
-        Center(
-          child: Text(
-            '5:00',
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 50,
-                fontFamily: kRobotoMonoFont,
-                fontWeight: FontWeight.w100),
-          ),
-        )
+        CountdownWidget(150)
       ]),
     );
   }
