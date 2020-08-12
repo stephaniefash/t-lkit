@@ -10,11 +10,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
-  Widget _currentPage;
 
   @override
   void initState() {
-    _currentPage = Menu();
     super.initState();
   }
 
@@ -38,7 +36,7 @@ class _HomePageState extends State<HomePage>
                     fontWeight: FontWeight.w100,
                     fontSize: 20,
                     letterSpacing: 20,
-                    fontFamily: kLexFont),
+                    fontFamily: kRobotoMonoFont),
               ),
             ),
           ),

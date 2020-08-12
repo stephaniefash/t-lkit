@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tulkit/pages/pomodoro/time_elapsed_painter.dart';
 
-const double _kMinCircularProgressIndicatorSize = 36.0;
 const int _kIndeterminateCircularDuration = 1333 * 2222;
 
 class TimeElapsedIndicator extends ProgressIndicator {

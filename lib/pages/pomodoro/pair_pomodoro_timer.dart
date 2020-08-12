@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:tulkit/constants/app_colors.dart';
+import 'package:tulkit/constants/strings.dart';
 import 'package:tulkit/pages/pomodoro/time_elapsed_indicator.dart';
 
 class PairPomodoroTimerCircleAnimation extends StatefulWidget {
+  final int durationInSeconds;
+  final double size;
 
+  PairPomodoroTimerCircleAnimation(this.durationInSeconds, this.size);
 
   @override
-  _PairPomodoroTimerCircleAnimationState createState() => _PairPomodoroTimerCircleAnimationState();
+  _PairPomodoroTimerCircleAnimationState createState() =>
+      _PairPomodoroTimerCircleAnimationState();
 }
 
-class _PairPomodoroTimerCircleAnimationState extends State<PairPomodoroTimerCircleAnimation>
+class _PairPomodoroTimerCircleAnimationState
+    extends State<PairPomodoroTimerCircleAnimation>
     with SingleTickerProviderStateMixin {
   Animation<double> _animation;
   AnimationController _controller;
@@ -17,7 +23,7 @@ class _PairPomodoroTimerCircleAnimationState extends State<PairPomodoroTimerCirc
   @override
   void initState() {
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 3000),
+      duration: Duration(seconds: widget.durationInSeconds),
       vsync: this,
       animationBehavior: AnimationBehavior.preserve,
     )..forward();
@@ -32,24 +38,38 @@ class _PairPomodoroTimerCircleAnimationState extends State<PairPomodoroTimerCirc
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.darkBlue,
-      child: Center(
-        child: Container(
-          width: 500,
-          height: 500,
-          child: AnimatedBuilder(
-              animation: _animation,
-              builder: (BuildContext context, Widget child) {
-                return TimeElapsedIndicator(
-                  unElapsedLineColor: AppColors.grey,
-                  value: _animation.value,
-                  elapsedLineColor: Colors.redAccent,
-                  strokeWidth: 20,
-                );
-              }),
+    return Material(
+      child: Stack(children: [
+        Container(
+          color: AppColors.darkBlue,
+          child: Center(
+            child: Container(
+              width: widget.size,
+              height: widget.size,
+              child: AnimatedBuilder(
+                  animation: _animation,
+                  builder: (BuildContext context, Widget child) {
+                    return TimeElapsedIndicator(
+                      unElapsedLineColor: AppColors.grey,
+                      value: _animation.value,
+                      elapsedLineColor: Colors.redAccent,
+                      strokeWidth: 4,
+                    );
+                  }),
+            ),
+          ),
         ),
-      ),
+        Center(
+          child: Text(
+            '5:00',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 50,
+                fontFamily: kRobotoMonoFont,
+                fontWeight: FontWeight.w100),
+          ),
+        )
+      ]),
     );
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tulkit/constants/app_colors.dart';
 import 'package:tulkit/pages/pomodoro/pair_pomodoro_timer.dart';
 
 class PairPomodoroPage extends StatefulWidget {
@@ -10,8 +9,10 @@ class PairPomodoroPage extends StatefulWidget {
 class _PairPomodoroPageState extends State<PairPomodoroPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: PairPomodoroTimerCircleAnimation(),
+    return Stack(
+      children: [Container(
+        child: PairPomodoroTimerCircleAnimation(5, 500),  //pass in the duration
+      ),]
     );
   }
 }
