@@ -59,7 +59,7 @@ class _PairPomodoroTimerCircleAnimationState
             ),
           ),
         ),
-        CountdownWidget(150)
+        CountdownWidget(widget.durationInSeconds)
       ]),
     );
   }

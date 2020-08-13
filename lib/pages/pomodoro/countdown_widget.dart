@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:tulkit/constants/styles.dart';
 
 class CountdownWidget extends StatefulWidget {
   final int startingTimeInSeconds;
@@ -11,12 +14,13 @@ class CountdownWidget extends StatefulWidget {
 
 class _CountdownWidgetState extends State<CountdownWidget> {
   int totalCountdownTimeInSeconds;
-  int currentSeconds;
-  int currentMinutes;
+  int secondsLeft;
+  int minutesLeft;
 
   @override
   void initState() {
-    _setStartingSecondsAndMinutes();
+    _setStartingTimeInMinutesAndSeconds();
+    _startCountdown();
     super.initState();
   }
 
@@ -24,23 +28,51 @@ class _CountdownWidgetState extends State<CountdownWidget> {
   Widget build(BuildContext context) {
     return Center(
       child: Text.rich(
-        TextSpan(text: _formattedValue(currentMinutes), children: [
+        TextSpan(text: _formattedValue(minutesLeft), children: [
           TextSpan(text: ':'),
-          TextSpan(text: _formattedValue(currentSeconds))
+          TextSpan(text: _formattedValue(secondsLeft))
         ]),
+        style: kCountdownStyle,
       ),
     );
   }
 
-  _setStartingSecondsAndMinutes() {
-    totalCountdownTimeInSeconds = widget.startingTimeInSeconds;
+  _setStartingTimeInMinutesAndSeconds() {
     setState(() {
-      currentSeconds = (totalCountdownTimeInSeconds % 60);
-      currentMinutes = (totalCountdownTimeInSeconds / 60).floor();
+      secondsLeft = widget.startingTimeInSeconds % 60;
+      minutesLeft = (widget.startingTimeInSeconds / 60).floor();
     });
+  }
+
+  _startCountdown() {
+    new Stream.periodic( Duration(seconds: 1))
+        .take(widget.startingTimeInSeconds)
+        .listen((v) => {_evaluateSeconds()});
   }
 
   String _formattedValue(int time) {
     return time < 10 ? '0$time' : time.toString();
+  }
+
+  _evaluateSeconds() {
+    if (secondsLeft == 0 && minutesLeft == 0) return;
+    if (secondsLeft == 0 && minutesLeft != 0) {
+      _reduceMinutes();
+      _updateSecondsLeft(59);
+    } else {
+      _updateSecondsLeft(secondsLeft - 1);
+    }
+  }
+
+  _updateSecondsLeft(int newTime) {
+    setState(() {
+      secondsLeft = newTime;
+    });
+  }
+
+  _reduceMinutes() {
+    setState(() {
+      minutesLeft--;
+    });
   }
 }

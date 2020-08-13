@@ -11,7 +11,7 @@ class _PairPomodoroPageState extends State<PairPomodoroPage> {
   Widget build(BuildContext context) {
     return Stack(
       children: [Container(
-        child: PairPomodoroTimerCircleAnimation(5, 500),  //pass in the duration
+        child: PairPomodoroTimerCircleAnimation(73, 500),  //pass in the duration
       ),]
     );
   }
