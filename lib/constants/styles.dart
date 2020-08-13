@@ -7,3 +7,11 @@ TextStyle kCountdownStyle = TextStyle(
   fontSize: 60,
   fontWeight: FontWeight.w100,
 );
+
+TextStyle kCountdownSubtextStyle = TextStyle(
+  color: Colors.white,
+  fontFamily: kMontserratFont,
+  fontSize: 20,
+  fontWeight: FontWeight.w100,
+);
+

@@ -38,14 +38,17 @@ class _PairPomodoroTimerCircleAnimationState
 
   @override
   Widget build(BuildContext context) {
+
+    double dimensions = 500;
+
     return Material(
-      child: Stack(children: [
-        Container(
-          color: AppColors.darkBlue,
-          child: Center(
+      child: Container(
+        color: AppColors.darkBlue,
+        child: Stack(children: [
+          Center(
             child: Container(
-              width: widget.size,
-              height: widget.size,
+              width: dimensions,
+              height: dimensions,
               child: AnimatedBuilder(
                   animation: _animation,
                   builder: (BuildContext context, Widget child) {
@@ -58,9 +61,14 @@ class _PairPomodoroTimerCircleAnimationState
                   }),
             ),
           ),
-        ),
-        CountdownWidget(widget.durationInSeconds)
-      ]),
+          Center(
+            child: Container(
+                width: dimensions,
+                height: dimensions,
+                child: CountdownWidget(widget.durationInSeconds)),
+          )
+        ]),
+      ),
     );
   }
 }
